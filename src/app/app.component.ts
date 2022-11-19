@@ -8,7 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 
 export class AppComponent {
-  title: string;
+  error_message: string;
   registerForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -27,19 +27,14 @@ export class AppComponent {
     const specialChars = `/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/`
     const isSpecialCharsPresent = specialChars.split('').some(char =>
       password?.value.includes(char))
-    console.log(password.value?.match(/^[^A-Z]+$/));
-    if (!password.value?.match(/^[^A-Z]+$/)) {
-
-      this.title = 'Password must contain atleas one uppercase letter'
-    } else if (!isSpecialCharsPresent) {
-      this.title = 'Password must contain atleast one simbol'
+    if (!isSpecialCharsPresent) {
+      this.error_message = 'Password must contain atleast one simbol'
     }
     return password;
   }
   get repeat_password() {
     return this.registerForm.get('repeat_password');
   }
-
 
   loginUser() {
     console.log(this.registerForm.value)
