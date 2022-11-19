@@ -6,7 +6,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
 export class AppComponent {
   error_message: string;
   registerForm = new FormGroup({
